@@ -1,0 +1,108 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(to right, #868f96 0%, #596164 100%);
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+  margin: 30px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #606470;
+}
+
+.container {
+  border: 1px solid #606470;
+  padding: 40px;
+  margin: 80px auto;
+  background: white;
+  border-radius: 10px;
+}
+
+.search-bar {
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin-bottom: 10px;
+}
+
+.units {
+  font-size: 20px;
+  text-align: top;
+}
+
+.celcius-default {
+  color: black;
+}
+
+.active-unit {
+  color: black;
+}
+
+.inactive-unit {
+  color: #606470;
+}
+
+.weather-line {
+  margin-top: 30px;
+}
+
+.current-weather-emoji {
+  font-size: 80px;
+  margin-top: -10px;
+}
+
+.precipitation {
+  color: #606470;
+}
+
+.city {
+  text-align: right;
+}
+
+.current-date {
+  color: #606470;
+  text-align: right;
+}
+
+.current-condition {
+  color: #606470;
+  text-align: right;
+}
+
+.forecast-line {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.forecast-title {
+  text-align: center;
+}
+
+.card-emoji {
+  font-size: 60px;
+  text-align: center;
+}
+
+.forecast-text {
+  text-align: center;
+  color: #606470;
+}
+
+.current-forecast-card {
+  background: #ececec;
+}
+
+.forecast-card {
+  background: white;
+  transition: all 200ms ease-in-out;
+}
+
+.forecast-card:hover {
+  background: #ececec;
+  cursor: pointer;
+}
