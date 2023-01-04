@@ -20,6 +20,7 @@ a {
   margin: 80px auto;
   background: white;
   border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .search-bar {
@@ -105,4 +106,18 @@ a {
 .forecast-card:hover {
   background: #ececec;
   cursor: pointer;
+}
+
+.credits {
+  text-align: center;
+  color: #32333f;
+}
+
+.credits-link {
+  color: #aeafb3;
+  padding-bottom: 15px;
+}
+
+.credits-link:hover {
+  color: #32333f;
 }
