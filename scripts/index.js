@@ -1,5 +1,6 @@
 // Day and Time
-function currentDate(date) {
+function currentDate(timestamp) {
+  let date = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -44,7 +45,6 @@ let day4Date = new Date();
 day4Date.setDate(now.getDate() + 3);
 let day5Date = new Date();
 day5Date.setDate(now.getDate() + 4);
-document.querySelector("#updated-date").innerHTML = currentDate(now);
 document.querySelector("#day-1").innerHTML = dayForcast(now);
 document.querySelector("#day-2").innerHTML = dayForcast(day2Date);
 document.querySelector("#day-3").innerHTML = dayForcast(day3Date);
@@ -134,6 +134,9 @@ function showTemperature(response) {
   );
   document.querySelector("#day5-high").innerHTML = Math.round(
     response.data.main.temp_max
+  );
+  document.querySelector("#updated-date").innerHTML = currentDate(
+    response.data.dt * 1000
   );
 }
 
