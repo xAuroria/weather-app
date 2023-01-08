@@ -97,10 +97,13 @@ function showTemperature(response) {
     .querySelector("#current-weather-icon")
     .setAttribute(
       "src",
-      `https://openweathermap.org/img/wn/${response.data.weather.icon}.png`
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
     );
+  document
+    .querySelector("#current-weather-icon")
+    .setAttribute("alt", response.data.weather[0].description);
   document.querySelector("#weather-condition").innerHTML =
-    response.data.weather[0].main;
+    response.data.weather[0].description;
   document.querySelector("#current-temp").innerHTML = Math.round(
     response.data.main.temp
   );

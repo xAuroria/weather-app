@@ -55,6 +55,7 @@ a {
 .current-weather-emoji {
   font-size: 80px;
   margin-top: -10px;
+  height: 100%;
 }
 
 .precipitation {
@@ -73,6 +74,7 @@ a {
 .current-condition {
   color: #606470;
   text-align: right;
+  text-transform: capitalize;
 }
 
 .forecast-line {
