@@ -114,6 +114,51 @@ function showTemperature(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+  document
+    .querySelector("#day-1-icon")
+    .setAttribute(
+      "src",
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+    );
+  document
+    .querySelector("#day-1-icon")
+    .setAttribute("alt", response.data.weather[0].description);
+  document
+    .querySelector("#day-2-icon")
+    .setAttribute(
+      "src",
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+    );
+  document
+    .querySelector("#day-2-icon")
+    .setAttribute("alt", response.data.weather[0].description);
+  document
+    .querySelector("#day-3-icon")
+    .setAttribute(
+      "src",
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+    );
+  document
+    .querySelector("#day-3-icon")
+    .setAttribute("alt", response.data.weather[0].description);
+  document
+    .querySelector("#day-4-icon")
+    .setAttribute(
+      "src",
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+    );
+  document
+    .querySelector("#day-4-icon")
+    .setAttribute("alt", response.data.weather[0].description);
+  document
+    .querySelector("#day-5-icon")
+    .setAttribute(
+      "src",
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+    );
+  document
+    .querySelector("#day-5-icon")
+    .setAttribute("alt", response.data.weather[0].description);
   document.querySelector("#day1-low").innerHTML = Math.round(
     response.data.main.temp_min
   );

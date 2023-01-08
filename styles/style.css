@@ -89,6 +89,7 @@ a {
 .card-emoji {
   font-size: 60px;
   text-align: center;
+  height: 100%;
 }
 
 .forecast-text {
