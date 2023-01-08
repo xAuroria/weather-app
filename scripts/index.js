@@ -93,6 +93,12 @@ searchButton.addEventListener("click", citySearchInput);
 // Weather API
 function showTemperature(response) {
   document.querySelector("#city").innerHTML = response.data.name;
+  document
+    .querySelector("#current-weather-icon")
+    .setAttribute(
+      "src",
+      `https://openweathermap.org/img/wn/${response.data.weather.icon}.png`
+    );
   document.querySelector("#weather-condition").innerHTML =
     response.data.weather[0].main;
   document.querySelector("#current-temp").innerHTML = Math.round(
