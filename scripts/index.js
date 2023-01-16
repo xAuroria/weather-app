@@ -49,8 +49,8 @@ function getCurrentLocation(event) {
 function currentWeather(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKey = "f9c046b1b7ef564f01a2cb6705a569e7";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  let apiKey = "3d6a4cf22b70ta18ad3b74415fb0obb5";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${lat}&lon=${lon}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
 
@@ -89,9 +89,6 @@ function showTemperature(response) {
     response.data.daily[0].condition.description;
   document.querySelector("#current-temp").innerHTML = Math.round(
     response.data.daily[0].temperature.day
-  );
-  document.querySelector("#feels-like").innerHTML = Math.round(
-    response.data.daily[0].temperature.feels_like
   );
   document.querySelector("#humidity").innerHTML =
     response.data.daily[0].temperature.humidity;
@@ -191,12 +188,6 @@ function switchToFahrenheit(event) {
   fahrenheitActive.classList.add("active-unit");
   celciusInactive.classList.add("inactive-unit");
 
-  let feelsLikeElement = document.querySelector("#feels-like");
-  let feelsLike = feelsLikeElement.innerHTML;
-  feelsLike = Number(feelsLike);
-  feelsLikeElement.innerHTML = Math.round(feelsLike * 1.8 + 32);
-  document.querySelector("#feels-like-temp").innerHTML = "°F";
-
   let windElement = document.querySelector("#wind");
   let wind = windElement.innerHTML;
   wind = Number(wind);
@@ -270,12 +261,6 @@ function switchToCelcius(event) {
   celciusActive.classList.remove("inactive-unit");
   celciusActive.classList.add("active-unit");
   fahrenheitInactive.classList.add("inactive-unit");
-
-  let feelsLikeElement = document.querySelector("#feels-like");
-  let feelsLike = feelsLikeElement.innerHTML;
-  feelsLike = Number(feelsLike);
-  feelsLikeElement.innerHTML = Math.round((feelsLike - 32) / 1.8);
-  document.querySelector("#feels-like-temp").innerHTML = "°C";
 
   let windElement = document.querySelector("#wind");
   let wind = windElement.innerHTML;
