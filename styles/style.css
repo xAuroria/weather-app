@@ -108,7 +108,6 @@ a {
 
 .forecast-card:hover {
   background: #ececec;
-  cursor: pointer;
 }
 
 .credits {
@@ -123,4 +122,10 @@ a {
 
 .credits-link:hover {
   color: #32333f;
+}
+
+@media screen and (max-width: 1200px) {
+  .search-bar {
+    width: 100%;
+  }
 }
