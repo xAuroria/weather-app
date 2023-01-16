@@ -22,7 +22,8 @@ function currentDate(timestamp) {
   return `${day} ${hour}:${minute}`;
 }
 
-function dayForcast(date) {
+function dayForecast(timestamp) {
+  let date = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -35,21 +36,6 @@ function dayForcast(date) {
   let day = days[date.getDay()];
   return `${day}`;
 }
-
-let now = new Date();
-let day2Date = new Date();
-day2Date.setDate(now.getDate() + 1);
-let day3Date = new Date();
-day3Date.setDate(now.getDate() + 2);
-let day4Date = new Date();
-day4Date.setDate(now.getDate() + 3);
-let day5Date = new Date();
-day5Date.setDate(now.getDate() + 4);
-document.querySelector("#day-1").innerHTML = dayForcast(now);
-document.querySelector("#day-2").innerHTML = dayForcast(day2Date);
-document.querySelector("#day-3").innerHTML = dayForcast(day3Date);
-document.querySelector("#day-4").innerHTML = dayForcast(day4Date);
-document.querySelector("#day-5").innerHTML = dayForcast(day5Date);
 
 // Geolocation on Page Load
 searchCity("New York");
@@ -79,8 +65,8 @@ function citySearchInput(event) {
 }
 
 function searchCity(city) {
-  let apiKey = "f9c046b1b7ef564f01a2cb6705a569e7";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  let apiKey = "3d6a4cf22b70ta18ad3b74415fb0obb5";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
 
@@ -92,105 +78,103 @@ searchButton.addEventListener("click", citySearchInput);
 
 // Weather API
 function showTemperature(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document
     .querySelector("#current-weather-icon")
-    .setAttribute(
-      "src",
-      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
-    );
+    .setAttribute("src", response.data.daily[0].condition.icon_url);
   document
     .querySelector("#current-weather-icon")
-    .setAttribute("alt", response.data.weather[0].description);
+    .setAttribute("alt", response.data.daily[0].condition.description);
   document.querySelector("#weather-condition").innerHTML =
-    response.data.weather[0].description;
+    response.data.daily[0].condition.description;
   document.querySelector("#current-temp").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.daily[0].temperature.day
   );
   document.querySelector("#feels-like").innerHTML = Math.round(
-    response.data.main.feels_like
+    response.data.daily[0].temperature.feels_like
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.data.daily[0].temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
+    response.data.daily[0].wind.speed
   );
   document
     .querySelector("#day-1-icon")
-    .setAttribute(
-      "src",
-      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
-    );
+    .setAttribute("src", response.data.daily[0].condition.icon_url);
   document
     .querySelector("#day-1-icon")
-    .setAttribute("alt", response.data.weather[0].description);
+    .setAttribute("alt", response.data.daily[0].condition.description);
   document
     .querySelector("#day-2-icon")
-    .setAttribute(
-      "src",
-      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
-    );
+    .setAttribute("src", response.data.daily[1].condition.icon_url);
   document
     .querySelector("#day-2-icon")
-    .setAttribute("alt", response.data.weather[0].description);
+    .setAttribute("alt", response.data.daily[1].condition.description);
   document
     .querySelector("#day-3-icon")
-    .setAttribute(
-      "src",
-      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
-    );
+    .setAttribute("src", response.data.daily[2].condition.icon_url);
   document
     .querySelector("#day-3-icon")
-    .setAttribute("alt", response.data.weather[0].description);
+    .setAttribute("alt", response.data.daily[2].condition.description);
   document
     .querySelector("#day-4-icon")
-    .setAttribute(
-      "src",
-      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
-    );
+    .setAttribute("src", response.data.daily[3].condition.icon_url);
   document
     .querySelector("#day-4-icon")
-    .setAttribute("alt", response.data.weather[0].description);
+    .setAttribute("alt", response.data.daily[3].condition.description);
   document
     .querySelector("#day-5-icon")
-    .setAttribute(
-      "src",
-      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
-    );
+    .setAttribute("src", response.data.daily[4].condition.icon_url);
   document
     .querySelector("#day-5-icon")
-    .setAttribute("alt", response.data.weather[0].description);
+    .setAttribute("alt", response.data.daily[4].condition.description);
   document.querySelector("#day1-low").innerHTML = Math.round(
-    response.data.main.temp_min
+    response.data.daily[0].temperature.minimum
   );
   document.querySelector("#day1-high").innerHTML = Math.round(
-    response.data.main.temp_max
+    response.data.daily[0].temperature.maximum
   );
   document.querySelector("#day2-low").innerHTML = Math.round(
-    response.data.main.temp_min
+    response.data.daily[1].temperature.minimum
   );
   document.querySelector("#day2-high").innerHTML = Math.round(
-    response.data.main.temp_max
+    response.data.daily[1].temperature.maximum
   );
   document.querySelector("#day3-low").innerHTML = Math.round(
-    response.data.main.temp_min
+    response.data.daily[2].temperature.minimum
   );
   document.querySelector("#day3-high").innerHTML = Math.round(
-    response.data.main.temp_max
+    response.data.daily[2].temperature.maximum
   );
   document.querySelector("#day4-low").innerHTML = Math.round(
-    response.data.main.temp_min
+    response.data.daily[3].temperature.minimum
   );
   document.querySelector("#day4-high").innerHTML = Math.round(
-    response.data.main.temp_max
+    response.data.daily[3].temperature.maximum
   );
   document.querySelector("#day5-low").innerHTML = Math.round(
-    response.data.main.temp_min
+    response.data.daily[4].temperature.minimum
   );
   document.querySelector("#day5-high").innerHTML = Math.round(
-    response.data.main.temp_max
+    response.data.daily[4].temperature.maximum
   );
   document.querySelector("#updated-date").innerHTML = currentDate(
-    response.data.dt * 1000
+    response.data.daily[0].time * 1000
+  );
+  document.querySelector("#day-1").innerHTML = dayForecast(
+    response.data.daily[0].time * 1000
+  );
+  document.querySelector("#day-2").innerHTML = dayForecast(
+    response.data.daily[1].time * 1000
+  );
+  document.querySelector("#day-3").innerHTML = dayForecast(
+    response.data.daily[2].time * 1000
+  );
+  document.querySelector("#day-4").innerHTML = dayForecast(
+    response.data.daily[3].time * 1000
+  );
+  document.querySelector("#day-5").innerHTML = dayForecast(
+    response.data.daily[4].time * 1000
   );
 }
 
