@@ -62,6 +62,7 @@ function citySearchInput(event) {
   event.preventDefault();
   let city = document.querySelector("#city-search-input").value;
   searchCity(city);
+  switchToCelcius(event);
 }
 
 function searchCity(city) {
